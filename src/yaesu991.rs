@@ -10,8 +10,8 @@ pub struct Y991 {
 }
 
 impl Y991 {
-    pub fn init() -> Y991 {
-        let p1 = serialport::new("/dev/ttyUSB0", 9600);
+    pub fn init(path: &String, baud: u32) -> Y991 {
+        let p1 = serialport::new(path, baud);
         let mut prt = p1.open_native().expect("No tty found");
 
         let tout = Duration::from_millis(500);

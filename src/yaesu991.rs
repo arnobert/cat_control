@@ -26,7 +26,7 @@ impl Y991 {
         &self.port.write(cmd).expect("write failed");
     }
 
-    fn get(&mut self) -> String {
+    fn get(&mut self) -> String{
         const eol_sign: u8 = 59; //;
         const CMDLEN: usize = 1;
 
@@ -49,20 +49,20 @@ impl Y991 {
 //--------- PUBLIC FUNCTIONS FOLLOW HERE ---------------------
 
 //--------- AB: VFO-A TO VFO-B -------------------------------
-    pub fn set_a2b(&mut self) {
+    pub fn set_a2b(&mut self){
         self.set("AB;".as_bytes());
     }
 
 //--------- AC: ANTENNA TUNER CTRL ---------------------------
-    pub fn set_tuner_on(&mut self) {
+    pub fn set_tuner_on(&mut self){
         self.set("AC001;".as_bytes());
     }
 
-    pub fn set_tuner_off(&mut self) {
+    pub fn set_tuner_off(&mut self){
         self.set("AC000;".as_bytes());
     }
 
-    pub fn set_start_tuning(&mut self) {
+    pub fn set_start_tuning(&mut self){
         self.set("AC002;".as_bytes());
     }
 
@@ -75,42 +75,65 @@ impl Y991 {
     }
 
 //--------- AG: AF GAIN --------------------------------------
-    pub fn set_af_gain(&mut self, gain: u8) {
+    pub fn set_af_gain(&mut self, gain: u8){
 
     }
     pub fn get_af_gain(&mut self) -> u8 {0}
 
 //--------- AI: AUTO INFORMATION -----------------------------
-    pub fn set_ai_on(&mut self) {}
-    pub fn set_ai_off(&mut self) {}
+    pub fn set_ai_on(&mut self){
+        self.set("AI1;".as_bytes());
+    }
+
+    pub fn set_ai_off(&mut self){
+        self.set("AI0;".as_bytes());
+    }
 
     pub fn get_ai(&mut self) -> bool {false}
 
 //--------- AM: VFO-A TO MEMORY CHANNEL ----------------------
-    pub fn set_a2m(&mut self) {}
+    pub fn set_a2m(&mut self){
+        self.set("AM;".as_bytes());
+    }
 
 //--------- BA: VFO-B TO VFO-A -------------------------------
-    pub fn set_b2a(&mut self) {}
+    pub fn set_b2a(&mut self){
+        self.set("BA;".as_bytes());
+    }
 
 //--------- BC: AUTO NOTCH -----------------------------------
-    pub fn set_auto_notch_on(&mut self) {}
-    pub fn set_auto_notch_off(&mut self) {}
+    pub fn set_auto_notch_on(&mut self){
+        self.set("BC01;".as_bytes());
+    }
+    pub fn set_auto_notch_off(&mut self){
+        self.set("BC00;".as_bytes());
+    }
 
     pub fn get_auto_notch(&mut self) -> bool {false}
 
 //--------- BD: BAND DOWN ------------------------------------
-    pub fn set_band_down(&mut self) {}
+    pub fn set_band_down(&mut self){
+        self.set("BD0;".as_bytes());
+    }
 
 //--------- BI: BREAK IN -------------------------------------
-    pub fn set_break_in_on(&mut self) {}
-    pub fn set_break_in_off(&mut self) {}
+    pub fn set_break_in_on(&mut self) {
+        self.set("BI1;".as_bytes());
+    }
+    pub fn set_break_in_off(&mut self) {
+        self.set("BI0;".as_bytes());
+    }
 
     pub fn get_break_in(&mut self) -> bool {false}
 
 
 //--------- BP: MANUAL NOTCH ---------------------------------
-    pub fn set_manual_notch_on(&mut self) {}
-    pub fn set_manual_notch_off(&mut self) {}
+    pub fn set_manual_notch_on(&mut self) {
+
+    }
+    pub fn set_manual_notch_off(&mut self) {
+
+    }
 
     pub fn get_manual_notch(&mut self) -> bool {false}
 

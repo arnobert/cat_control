@@ -8,6 +8,6 @@ edition = "2018"
 
 [dependencies]
 serialport = "4.0.0"
-
+libmath = "0.2.1"
 [profile.dev]
 debug=true

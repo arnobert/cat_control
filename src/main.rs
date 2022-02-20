@@ -1,14 +1,18 @@
-mod yaesu991;
+use sat_track::yaesu991;
 
+mod sat_track;
+use std::{thread, time};
 
 fn main() {
 
-    let path = String::from("/dev/ttyUSB0");
-    let baud = 9600;
-    let mut radio = yaesu991::Y991::init(&path, baud);
+    let mut sat_tracker = sat_track::sat_track::init();
+    let ten_millis = time::Duration::from_millis(100);
 
-    radio.set_band_80m();
-   // let ptest = radio.get_freq();
-   // println!("GOT: {}", ptest);
+    loop{
+        sat_tracker.read_and_write();
+        thread::sleep(ten_millis);
+    }
+
+
 
 }
